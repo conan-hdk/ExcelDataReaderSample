@@ -30,27 +30,26 @@
 		{
 			this.components = new System.ComponentModel.Container();
 			this.toolStripContainer1 = new System.Windows.Forms.ToolStripContainer();
-			this.menuStrip1 = new System.Windows.Forms.MenuStrip();
 			this.statusStrip1 = new System.Windows.Forms.StatusStrip();
+			this.toolStripStatusLabel2 = new System.Windows.Forms.ToolStripStatusLabel();
+			this.lblClock = new System.Windows.Forms.ToolStripStatusLabel();
 			this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
 			this.splitContainer1 = new System.Windows.Forms.SplitContainer();
 			this.tableLayoutPanel2 = new System.Windows.Forms.TableLayoutPanel();
 			this.label1 = new System.Windows.Forms.Label();
-			this.listBox1 = new System.Windows.Forms.ListBox();
+			this.lbSheetNames = new System.Windows.Forms.ListBox();
 			this.dataGridView1 = new System.Windows.Forms.DataGridView();
+			this.label2 = new System.Windows.Forms.Label();
+			this.menuStrip1 = new System.Windows.Forms.MenuStrip();
 			this.mnFile = new System.Windows.Forms.ToolStripMenuItem();
 			this.mnOpen = new System.Windows.Forms.ToolStripMenuItem();
-			this.label2 = new System.Windows.Forms.Label();
-			this.lblFilepath = new System.Windows.Forms.Label();
-			this.lblClock = new System.Windows.Forms.ToolStripStatusLabel();
-			this.toolStripStatusLabel2 = new System.Windows.Forms.ToolStripStatusLabel();
 			this.timer1 = new System.Windows.Forms.Timer(this.components);
 			this.openFileDialog1 = new System.Windows.Forms.OpenFileDialog();
+			this.lblFilepath = new System.Windows.Forms.Label();
 			this.toolStripContainer1.BottomToolStripPanel.SuspendLayout();
 			this.toolStripContainer1.ContentPanel.SuspendLayout();
 			this.toolStripContainer1.TopToolStripPanel.SuspendLayout();
 			this.toolStripContainer1.SuspendLayout();
-			this.menuStrip1.SuspendLayout();
 			this.statusStrip1.SuspendLayout();
 			this.tableLayoutPanel1.SuspendLayout();
 			((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
@@ -59,6 +58,7 @@
 			this.splitContainer1.SuspendLayout();
 			this.tableLayoutPanel2.SuspendLayout();
 			((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
+			this.menuStrip1.SuspendLayout();
 			this.SuspendLayout();
 			// 
 			// toolStripContainer1
@@ -83,18 +83,6 @@
 			// 
 			this.toolStripContainer1.TopToolStripPanel.Controls.Add(this.menuStrip1);
 			// 
-			// menuStrip1
-			// 
-			this.menuStrip1.Dock = System.Windows.Forms.DockStyle.None;
-			this.menuStrip1.ImageScalingSize = new System.Drawing.Size(24, 24);
-			this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.mnFile});
-			this.menuStrip1.Location = new System.Drawing.Point(0, 0);
-			this.menuStrip1.Name = "menuStrip1";
-			this.menuStrip1.Size = new System.Drawing.Size(1016, 26);
-			this.menuStrip1.TabIndex = 0;
-			this.menuStrip1.Text = "menuStrip1";
-			// 
 			// statusStrip1
 			// 
 			this.statusStrip1.Dock = System.Windows.Forms.DockStyle.None;
@@ -106,6 +94,18 @@
 			this.statusStrip1.Name = "statusStrip1";
 			this.statusStrip1.Size = new System.Drawing.Size(1016, 23);
 			this.statusStrip1.TabIndex = 0;
+			// 
+			// toolStripStatusLabel2
+			// 
+			this.toolStripStatusLabel2.Name = "toolStripStatusLabel2";
+			this.toolStripStatusLabel2.Size = new System.Drawing.Size(951, 18);
+			this.toolStripStatusLabel2.Spring = true;
+			// 
+			// lblClock
+			// 
+			this.lblClock.Name = "lblClock";
+			this.lblClock.Size = new System.Drawing.Size(50, 18);
+			this.lblClock.Text = "Clock";
 			// 
 			// tableLayoutPanel1
 			// 
@@ -148,7 +148,7 @@
 			this.tableLayoutPanel2.ColumnCount = 1;
 			this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
 			this.tableLayoutPanel2.Controls.Add(this.label1, 0, 0);
-			this.tableLayoutPanel2.Controls.Add(this.listBox1, 0, 1);
+			this.tableLayoutPanel2.Controls.Add(this.lbSheetNames, 0, 1);
 			this.tableLayoutPanel2.Dock = System.Windows.Forms.DockStyle.Fill;
 			this.tableLayoutPanel2.Location = new System.Drawing.Point(0, 0);
 			this.tableLayoutPanel2.Name = "tableLayoutPanel2";
@@ -171,18 +171,22 @@
 			this.label1.Text = "Sheet";
 			this.label1.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
 			// 
-			// listBox1
+			// lbSheetNames
 			// 
-			this.listBox1.Dock = System.Windows.Forms.DockStyle.Fill;
-			this.listBox1.FormattingEnabled = true;
-			this.listBox1.ItemHeight = 18;
-			this.listBox1.Location = new System.Drawing.Point(3, 26);
-			this.listBox1.Name = "listBox1";
-			this.listBox1.Size = new System.Drawing.Size(178, 623);
-			this.listBox1.TabIndex = 2;
+			this.lbSheetNames.Dock = System.Windows.Forms.DockStyle.Fill;
+			this.lbSheetNames.FormattingEnabled = true;
+			this.lbSheetNames.ItemHeight = 18;
+			this.lbSheetNames.Location = new System.Drawing.Point(3, 26);
+			this.lbSheetNames.Name = "lbSheetNames";
+			this.lbSheetNames.Size = new System.Drawing.Size(178, 623);
+			this.lbSheetNames.TabIndex = 2;
+			this.lbSheetNames.SelectedValueChanged += new System.EventHandler(this.lbSheetNames_SelectedValueChanged);
 			// 
 			// dataGridView1
 			// 
+			this.dataGridView1.AllowUserToAddRows = false;
+			this.dataGridView1.AllowUserToDeleteRows = false;
+			this.dataGridView1.AllowUserToOrderColumns = true;
 			this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
 			this.dataGridView1.Dock = System.Windows.Forms.DockStyle.Fill;
 			this.dataGridView1.Location = new System.Drawing.Point(0, 0);
@@ -190,21 +194,8 @@
 			this.dataGridView1.RowTemplate.Height = 27;
 			this.dataGridView1.Size = new System.Drawing.Size(822, 652);
 			this.dataGridView1.TabIndex = 0;
-			// 
-			// mnFile
-			// 
-			this.mnFile.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.mnOpen});
-			this.mnFile.Name = "mnFile";
-			this.mnFile.Size = new System.Drawing.Size(57, 28);
-			this.mnFile.Text = "(&F)ile";
-			// 
-			// mnOpen
-			// 
-			this.mnOpen.Name = "mnOpen";
-			this.mnOpen.Size = new System.Drawing.Size(211, 30);
-			this.mnOpen.Text = "(&O)pen";
-			this.mnOpen.Click += new System.EventHandler(this.mnOpen_Click);
+			this.dataGridView1.DataSourceChanged += new System.EventHandler(this.dataGridView1_DataSourceChanged);
+			this.dataGridView1.RowPostPaint += new System.Windows.Forms.DataGridViewRowPostPaintEventHandler(this.dataGridView1_RowPostPaint);
 			// 
 			// label2
 			// 
@@ -218,27 +209,32 @@
 			this.label2.Text = "File";
 			this.label2.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
 			// 
-			// lblFilepath
+			// menuStrip1
 			// 
-			this.lblFilepath.AutoEllipsis = true;
-			this.lblFilepath.Dock = System.Windows.Forms.DockStyle.Fill;
-			this.lblFilepath.Location = new System.Drawing.Point(50, 0);
-			this.lblFilepath.Name = "lblFilepath";
-			this.lblFilepath.Padding = new System.Windows.Forms.Padding(3);
-			this.lblFilepath.Size = new System.Drawing.Size(963, 24);
-			this.lblFilepath.TabIndex = 2;
+			this.menuStrip1.Dock = System.Windows.Forms.DockStyle.None;
+			this.menuStrip1.ImageScalingSize = new System.Drawing.Size(24, 24);
+			this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.mnFile});
+			this.menuStrip1.Location = new System.Drawing.Point(0, 0);
+			this.menuStrip1.Name = "menuStrip1";
+			this.menuStrip1.Size = new System.Drawing.Size(1016, 26);
+			this.menuStrip1.TabIndex = 0;
+			this.menuStrip1.Text = "menuStrip1";
 			// 
-			// lblClock
+			// mnFile
 			// 
-			this.lblClock.Name = "lblClock";
-			this.lblClock.Size = new System.Drawing.Size(50, 18);
-			this.lblClock.Text = "Clock";
+			this.mnFile.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.mnOpen});
+			this.mnFile.Name = "mnFile";
+			this.mnFile.Size = new System.Drawing.Size(57, 22);
+			this.mnFile.Text = "(&F)ile";
 			// 
-			// toolStripStatusLabel2
+			// mnOpen
 			// 
-			this.toolStripStatusLabel2.Name = "toolStripStatusLabel2";
-			this.toolStripStatusLabel2.Size = new System.Drawing.Size(951, 18);
-			this.toolStripStatusLabel2.Spring = true;
+			this.mnOpen.Name = "mnOpen";
+			this.mnOpen.Size = new System.Drawing.Size(139, 30);
+			this.mnOpen.Text = "(&O)pen";
+			this.mnOpen.Click += new System.EventHandler(this.mnOpen_Click);
 			// 
 			// timer1
 			// 
@@ -248,6 +244,16 @@
 			// 
 			this.openFileDialog1.DefaultExt = "xlsx";
 			this.openFileDialog1.Filter = "Excelファイル|*.xlsx;*.xlsm";
+			// 
+			// lblFilepath
+			// 
+			this.lblFilepath.AutoEllipsis = true;
+			this.lblFilepath.Dock = System.Windows.Forms.DockStyle.Fill;
+			this.lblFilepath.Location = new System.Drawing.Point(50, 0);
+			this.lblFilepath.Name = "lblFilepath";
+			this.lblFilepath.Padding = new System.Windows.Forms.Padding(3);
+			this.lblFilepath.Size = new System.Drawing.Size(963, 24);
+			this.lblFilepath.TabIndex = 2;
 			// 
 			// frmXlsxViewer
 			// 
@@ -267,8 +273,6 @@
 			this.toolStripContainer1.TopToolStripPanel.PerformLayout();
 			this.toolStripContainer1.ResumeLayout(false);
 			this.toolStripContainer1.PerformLayout();
-			this.menuStrip1.ResumeLayout(false);
-			this.menuStrip1.PerformLayout();
 			this.statusStrip1.ResumeLayout(false);
 			this.statusStrip1.PerformLayout();
 			this.tableLayoutPanel1.ResumeLayout(false);
@@ -279,6 +283,8 @@
 			this.splitContainer1.ResumeLayout(false);
 			this.tableLayoutPanel2.ResumeLayout(false);
 			((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
+			this.menuStrip1.ResumeLayout(false);
+			this.menuStrip1.PerformLayout();
 			this.ResumeLayout(false);
 
 		}
@@ -291,7 +297,7 @@
 		private System.Windows.Forms.SplitContainer splitContainer1;
 		private System.Windows.Forms.TableLayoutPanel tableLayoutPanel2;
 		private System.Windows.Forms.Label label1;
-		private System.Windows.Forms.ListBox listBox1;
+		private System.Windows.Forms.ListBox lbSheetNames;
 		private System.Windows.Forms.DataGridView dataGridView1;
 		private System.Windows.Forms.MenuStrip menuStrip1;
 		private System.Windows.Forms.ToolStripMenuItem mnFile;
@@ -299,9 +305,9 @@
 		private System.Windows.Forms.ToolStripStatusLabel toolStripStatusLabel2;
 		private System.Windows.Forms.ToolStripStatusLabel lblClock;
 		private System.Windows.Forms.Label label2;
-		private System.Windows.Forms.Label lblFilepath;
 		private System.Windows.Forms.Timer timer1;
 		private System.Windows.Forms.OpenFileDialog openFileDialog1;
+		private System.Windows.Forms.Label lblFilepath;
 	}
 }
 
