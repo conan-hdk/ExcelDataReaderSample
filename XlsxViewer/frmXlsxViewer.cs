@@ -49,14 +49,14 @@ namespace XlsxViewer
 		{
 			lblFilepath.Text = null;
 			this.Text = Path.GetFileName(filepath) + " - XlsxViewer -";
-			using(var fs = new FileStream(filepath,FileMode.Open,FileAccess.Read,FileShare.ReadWrite ))
+			using (var fs = new FileStream(filepath, FileMode.Open, FileAccess.Read, FileShare.ReadWrite))
 			using (Excel.IExcelDataReader datareader = Excel.ExcelReaderFactory.CreateOpenXmlReader(fs))
 			{
 				dsBook = datareader.AsDataSet();
 			}
 			lbSheetNames.DataSource = null;
 			SheetNames.Clear();
-			foreach(DataTable dt in dsBook.Tables)
+			foreach (DataTable dt in dsBook.Tables)
 				SheetNames.Add(dt.TableName);
 			lbSheetNames.DataSource = SheetNames;
 			lblFilepath.Text = filepath;
@@ -65,7 +65,8 @@ namespace XlsxViewer
 		private void lbSheetNames_SelectedValueChanged(object sender, EventArgs e)
 		{
 			var lb = (ListBox)sender;
-			dataGridView1.DataSource = dsBook.Tables[(string)lb.SelectedItem];
+			var item = lb.SelectedItem;
+			dataGridView1.DataSource = (item == null) ? null : dsBook.Tables[(string)item];
 		}
 
 		private void dataGridView1_DataSourceChanged(object sender, EventArgs e)
